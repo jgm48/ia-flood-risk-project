@@ -94,7 +94,7 @@ def rivers_by_station_number(stations, N):
         river_station_tuple = (name, len(stations))
         # I changed this from extend to append, and it worked instantly
         river_number_list.append(river_station_tuple)
-    print(river_number_list)
+    
     # Check N is a valid number
     if type(N) != int:
         raise TypeError("N must be an integer")
@@ -105,23 +105,17 @@ def rivers_by_station_number(stations, N):
 
     # Sort list by number of stations descending
     river_number_list = sorted_by_key(river_number_list, 1, reverse=True)
-    
+    print(river_number_list)
     # Final list for holding number of stations for each river
-    river_output_list = []
+    river_output_list = river_number_list[:N]
     
-    # Iterate N times through sorted list
-    for i in range(N-1):
-        river_output_list.extend(river_number_list[i])
-        
-    # Check to see if next key has same value when i = N using a while True  
-    while True:
-        river_output_list.extend(river_number_list[N])
-        # Can use N to count as we don't need it for sorting
-        if river_number_list[N+1][1] == river_number_list[N][1]:
-            N += 1 
-            continue
-        else:
-            break
-   
-    # The final ouput of the function
-    return river_output_list
+    # Check to see if next key has same value
+    if river_number_list[N][1] != river_number_list[N-1][1]:
+        return river_output_list
+    else:
+        for i in range(N, len(river_number_list)):
+            if river_number_list[i][1] == river_number_list[i-1][1]:
+                river_output_list.append(river_number_list[i])
+            else:
+                break
+        return river_output_list
