@@ -8,6 +8,6 @@ from floodsystem.datafetcher import *
 from floodsystem.stationdata import build_station_list
 
 # Run the demonstration with N = 9
-stations = build_station_list
+stations = build_station_list()
 rivers_by_station_number(stations, 9)
 
