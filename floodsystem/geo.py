@@ -82,9 +82,6 @@ def stations_by_river(stations):
 '''TASK 1E'''
 def rivers_by_station_number(stations, N):
     '''Returns a list of tuples containing river name and number of stations, sorted by number of stations'''
-    
-    # Get a list of rivers with at least one station
-    valid_rivers = rivers_with_station(stations)
 
     # Get the dictionary from above
     river_dict = stations_by_river(stations)
@@ -93,11 +90,11 @@ def rivers_by_station_number(stations, N):
     river_number_list = []
 
     # Iterate through the list of all rivers, and find how many stations they each have
-    for i in valid_rivers:
-        # Use extend method to deal with tuples being added to a list
-        river_station_tuple = (i, len((stations_by_river(stations))[i]))
-        river_number_list.extend(river_station_tuple)
-    
+    for name, stations in river_dict.items():
+        river_station_tuple = (name, len(stations))
+        # I changed this from extend to append, and it worked instantly
+        river_number_list.append(river_station_tuple)
+    print(river_number_list)
     # Check N is a valid number
     if type(N) != int:
         raise TypeError("N must be an integer")
@@ -105,17 +102,17 @@ def rivers_by_station_number(stations, N):
         raise ValueError("N must be less than the total number of rivers with at least one monitoring station")
     else:
         pass
-    
+
     # Sort list by number of stations descending
     river_number_list = sorted_by_key(river_number_list, 1, reverse=True)
-
+    
     # Final list for holding number of stations for each river
     river_output_list = []
-
+    
     # Iterate N times through sorted list
     for i in range(N-1):
         river_output_list.extend(river_number_list[i])
-            
+        
     # Check to see if next key has same value when i = N using a while True  
     while True:
         river_output_list.extend(river_number_list[N])
@@ -125,6 +122,6 @@ def rivers_by_station_number(stations, N):
             continue
         else:
             break
-    
+   
     # The final ouput of the function
     return river_output_list
