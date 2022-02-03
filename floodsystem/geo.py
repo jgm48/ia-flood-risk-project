@@ -105,7 +105,7 @@ def rivers_by_station_number(stations, N):
 
     # Sort list by number of stations descending
     river_number_list = sorted_by_key(river_number_list, 1, reverse=True)
-    print(river_number_list)
+ 
     # Final list for holding number of stations for each river
     river_output_list = river_number_list[:N]
     
