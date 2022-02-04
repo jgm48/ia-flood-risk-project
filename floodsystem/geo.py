@@ -15,9 +15,6 @@ from haversine import haversine
 def stations_by_distance(stations, p):
     "Takes a list of stations and a coordinate p. returns a list of (station, distance) tuples in order of distance"
 
-    # Build the lsit of stations
-    stations = build_station_list()
-
     # Make an empty list for the (station, distance) tuples to go into
     list_of_tuples = []
 
@@ -31,9 +28,6 @@ def stations_by_distance(stations, p):
 # for task 1C
 def stations_within_radius(stations, centre, r):
     """Returns a list of stations within a radius of a given coordinate"""
-
-    # Build a list of stations
-    stations = build_station_list()
 
     # Create an empty list for the stations within the radius to go in to
     list_of_stations_in_radius = []
@@ -82,9 +76,12 @@ def stations_by_river(stations):
 '''TASK 1E'''
 def rivers_by_station_number(stations, N):
     '''Returns a list of tuples containing river name and number of stations, sorted by number of stations'''
+<<<<<<< HEAD
     
     # Get a list of rivers with at least one station
     valid_rivers = rivers_with_station(stations)
+=======
+>>>>>>> 324e8493f647d047c6e2b53cdcbe672c83f591b2
 
     # Get the dictionary from above
     river_dict = stations_by_river(stations)
@@ -93,9 +90,16 @@ def rivers_by_station_number(stations, N):
     river_number_list = []
 
     # Iterate through the list of all rivers, and find how many stations they each have
+<<<<<<< HEAD
     for i in valid_rivers:
         # Use extend method to deal with tuples being added to a list
         river_number_list.extend(i, len((stations_by_river(stations))[i]))
+=======
+    for name, stations in river_dict.items():
+        river_station_tuple = (name, len(stations))
+        # I changed this from extend to append, and it worked instantly
+        river_number_list.append(river_station_tuple)
+>>>>>>> 324e8493f647d047c6e2b53cdcbe672c83f591b2
     
     # Check N is a valid number
     if type(N) != int:
@@ -104,6 +108,7 @@ def rivers_by_station_number(stations, N):
         raise ValueError("N must be less than the total number of rivers with at least one monitoring station")
     else:
         pass
+<<<<<<< HEAD
     
     # Sort list by number of stations descending
     river_number_list = sorted_by_key(river_number_list, 1, reverse=True)
@@ -127,3 +132,22 @@ def rivers_by_station_number(stations, N):
     
     # The final ouput of the function
     return river_output_list
+=======
+
+    # Sort list by number of stations descending
+    river_number_list = sorted_by_key(river_number_list, 1, reverse=True)
+ 
+    # Final list for holding number of stations for each river
+    river_output_list = river_number_list[:N]
+    
+    # Check to see if next key has same value
+    if river_number_list[N][1] != river_number_list[N-1][1]:
+        return river_output_list
+    else:
+        for i in range(N, len(river_number_list)):
+            if river_number_list[i][1] == river_number_list[i-1][1]:
+                river_output_list.append(river_number_list[i])
+            else:
+                break
+        return river_output_list
+>>>>>>> 324e8493f647d047c6e2b53cdcbe672c83f591b2
