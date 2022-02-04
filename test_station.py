@@ -5,6 +5,7 @@
 
 from floodsystem.station import MonitoringStation
 from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.stationdata import build_station_list
 
 def test_create_monitoring_station():
 
@@ -27,9 +28,15 @@ def test_create_monitoring_station():
     assert s.town == town
 
 # Task 1F
-def test_inconsistent_typical_range_stations(stations):
+def test_inconsistent_typical_range_stations():
     
+    # Build a list of stations
+    stations = build_station_list()
+    
+    # List of stations with inconsistent typical data
+    inconsistent_station_list = inconsistent_typical_range_stations(stations)
+
     N = len(stations)
 
     # Check that the number of inconsistent range stations is between 0 and the number of stations inclusive
-    assert len(inconsistent_typical_range_stations) <= N and len(inconsistent_typical_range_stations) >= 0
+    assert len(inconsistent_station_list) <= N and len(inconsistent_station_list) >= 0
