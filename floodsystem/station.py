@@ -55,6 +55,7 @@ def inconsistent_typical_range_stations(stations):
     
 
     # List comprehension to build a list of inconsistent stations
-    inconsistent_list = [x for x in stations if MonitoringStation.typical_range_consistent == False]
-
-    return inconsistent_list
+    full_inconsistent_list = [x for x in stations if MonitoringStation.typical_range_consistent(x) == False]
+    inconsistent_names_list = [station.name for station in full_inconsistent_list]
+   
+    return inconsistent_names_list
