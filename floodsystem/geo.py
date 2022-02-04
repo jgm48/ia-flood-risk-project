@@ -91,14 +91,11 @@ def rivers_by_station_number(stations, N):
     river_number_list = []
 
     # Iterate through the list of all rivers, and find how many stations they each have
-    for i in valid_rivers:
-        # Use extend method to deal with tuples being added to a list
-        river_number_list.append(i, len((stations_by_river(stations))[i])) # THIS NEEDS FIXING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     for name, stations in river_dict.items():
         river_station_tuple = (name, len(stations))
         # I changed this from extend to append, and it worked instantly
         river_number_list.append(river_station_tuple)
-    
+        
     # Check N is a valid number
     if type(N) != int:
         raise TypeError("N must be an integer")
