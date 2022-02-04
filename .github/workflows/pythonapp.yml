@@ -31,8 +31,8 @@ jobs:
       #   run: flake8 --statistics *.py
 
       
-      #- name: Run unit tests using pytest
-      #  run: pytest -v **Temporarily commented out**
+      - name: Run unit tests using pytest
+        run: pytest -v
 
       - name: Run Deliverable 1 code
         run: |
