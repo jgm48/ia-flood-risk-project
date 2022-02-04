@@ -9,8 +9,6 @@ from floodsystem.stationdata import build_station_list
 """John pls write your test functions here, pls make sure all 
 your tempVar are only defined inside functions so there are no clashes"""
 
-
-
 # Task 1B
 def test_stations_by_distance():
     
