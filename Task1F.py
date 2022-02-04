@@ -4,7 +4,7 @@ from distutils.command.build import *
 from floodsystem.geo import *
 from floodsystem.datafetcher import *
 from floodsystem.stationdata import build_station_list
-from floodsystem.station import MonitoringStation, inconsistent_typical_range
+from floodsystem.station import MonitoringStation, inconsistent_typical_range_stations
 
 def run():
     # Build a list of stations
