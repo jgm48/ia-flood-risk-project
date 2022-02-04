@@ -15,9 +15,6 @@ from haversine import haversine
 def stations_by_distance(stations, p):
     "Takes a list of stations and a coordinate p. returns a list of (station, distance) tuples in order of distance"
 
-    # Build the lsit of stations
-    stations = build_station_list()
-
     # Make an empty list for the (station, distance) tuples to go into
     list_of_tuples = []
 
@@ -31,9 +28,6 @@ def stations_by_distance(stations, p):
 # for task 1C
 def stations_within_radius(stations, centre, r):
     """Returns a list of stations within a radius of a given coordinate"""
-
-    # Build a list of stations
-    stations = build_station_list()
 
     # Create an empty list for the stations within the radius to go in to
     list_of_stations_in_radius = []
