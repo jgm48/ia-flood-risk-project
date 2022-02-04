@@ -1,23 +1,11 @@
 """Unit test for the geo module"""
 
 import floodsystem.geo
-from floodsystem.station import *
-from floodsystem.datafetcher import *
-from floodsystem.stationdata import build_station_list
-
-"""John pls write your test functions here, pls make sure all 
-your tempVar are only defined inside functions so there are no clashes"""
-
-"""Unit test for the geo module"""
-
-import floodsystem.geo
 from floodsystem.geo import *
 from floodsystem.station import *
 from floodsystem.datafetcher import *
+from haversine import haversine
 from floodsystem.stationdata import build_station_list
-
-"""John pls write your test functions here, pls make sure all 
-your tempVar are only defined inside functions so there are no clashes"""
 
 # Task 1B
 def test_stations_by_distance():
