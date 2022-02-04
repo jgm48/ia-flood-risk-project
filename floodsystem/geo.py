@@ -13,7 +13,7 @@ from haversine import haversine
 def stations_by_distance(stations, p):
     "Takes a list of stations and a coordinate p. returns a list of (station, distance) tuples in order of distance"
 
-    # build the list of stations
+    # Build the lsit of stations
     stations = build_station_list()
 
     # Make an empty list for the (station, distance) tuples to go into
@@ -30,9 +30,9 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     """Returns a list of stations within a radius of a given coordinate"""
 
-    # build the list of stations
+    # Build a list of stations
     stations = build_station_list()
-    
+
     # Create an empty list for the stations within the radius to go in to
     list_of_stations_in_radius = []
     
@@ -80,6 +80,9 @@ def stations_by_river(stations):
 '''TASK 1E'''
 def rivers_by_station_number(stations, N):
     '''Returns a list of tuples containing river name and number of stations, sorted by number of stations'''
+    
+    # Get a list of rivers with at least one station
+    valid_rivers = rivers_with_station(stations)
 
     # Get the dictionary from above
     river_dict = stations_by_river(stations)
@@ -88,6 +91,9 @@ def rivers_by_station_number(stations, N):
     river_number_list = []
 
     # Iterate through the list of all rivers, and find how many stations they each have
+    for i in valid_rivers:
+        # Use extend method to deal with tuples being added to a list
+        river_number_list.extend(i, len((stations_by_river(stations))[i]))
     for name, stations in river_dict.items():
         river_station_tuple = (name, len(stations))
         # I changed this from extend to append, and it worked instantly
