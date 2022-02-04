@@ -2,9 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 """This module contains a collection of functions related to
-geographical data.
-
-"""
+geographical data."""
 
 from typing import Type
 from floodsystem.stationdata import build_station_list
@@ -14,6 +12,9 @@ from haversine import haversine
 # for task 1B
 def stations_by_distance(stations, p):
     "Takes a list of stations and a coordinate p. returns a list of (station, distance) tuples in order of distance"
+
+    # build the list of stations
+    stations = build_station_list()
 
     # Make an empty list for the (station, distance) tuples to go into
     list_of_tuples = []
@@ -29,6 +30,9 @@ def stations_by_distance(stations, p):
 def stations_within_radius(stations, centre, r):
     """Returns a list of stations within a radius of a given coordinate"""
 
+    # build the list of stations
+    stations = build_station_list()
+    
     # Create an empty list for the stations within the radius to go in to
     list_of_stations_in_radius = []
     
