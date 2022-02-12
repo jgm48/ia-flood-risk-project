@@ -20,3 +20,16 @@ def stations_level_over_threshold(stations, tol):
     #sort list and return that
     sorted_threshold_list = sorted_by_key(stations_over_threshold, 1, reverse=True)
     return sorted_threshold_list
+
+# for task 1C :)
+def stations_highest_rel_level(stations, N):
+    "returns a list of N stations at which the water, relative to the typical range, is highest"
+    "List should be sorted in descending order by relative level"
+
+    # Create an ordered list of all stations, using the function made in 2B (using an arbitrary big tolerance)
+    full_list = stations_level_over_threshold(stations, -100000000)
+
+    # create new list with the top N values from full_list
+    n_list = full_list[0:N]
+
+    return n_list
