@@ -1,5 +1,8 @@
+import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+import analysis
+from analysis import polyfit
 
 # for task 2e
 def plot_water_levels(station, dates, levels):
@@ -8,15 +11,15 @@ def plot_water_levels(station, dates, levels):
 
     # plot the low and high typical values
     low_typ_range_list = len(dates) * [station.typical_range[0]]
-    plt.plot(dates, low_typ_range_list, 'r', label='low level')
+    plt.plot(dates, low_typ_range_list, color='r', label='low level')
     high_typ_range_list = len(dates) * [station.typical_range[1]]
-    plt.plot(dates, high_typ_range_list, 'g', label='high level')
+    plt.plot(dates, high_typ_range_list, color='g', label='high level')
 
     # plot the water level data
     if dates == [] or levels == []:
         return "Invalid data"
     else:
-        plt.plot(dates, levels, 'b', label='water level')
+        plt.plot(dates, levels, color='b', label='water level')
     
     # setting up graph layout
     plt.xlabel('Date')
@@ -30,4 +33,18 @@ def plot_water_levels(station, dates, levels):
     manager = plt.get_current_fig_manager()
     manager.full_screen_toggle()
     # gimmie dat plot!
+    plt.show()
+
+# for Task 2F
+
+def plot_water_level_with_fit(station, dates, levels, p):
+    
+    dates_float_list = matplotlib.dates.date2num(dates)
+    # best fit polynomial
+    poly, d0 = polyfit(dates, levels, p)
+    plt.plot(dates, poly(dates_float_list - d0), color='gold', label='best fit polynomial order {0}'.format(p))
+    plt.legend(loc='best')
+    # data from before
+    plot_water_levels(station, dates, levels)
+    
     plt.show()
