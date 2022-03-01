@@ -29,6 +29,5 @@ def plot_water_levels(station, dates, levels):
     # maximise the window
     manager = plt.get_current_fig_manager()
     manager.full_screen_toggle()
-    
     # gimmie dat plot!
     plt.show()
