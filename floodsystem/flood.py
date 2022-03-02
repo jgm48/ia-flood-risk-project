@@ -1,4 +1,4 @@
-from .utils import sorted_by_key
+from utils import sorted_by_key
 
 # for task 2B
 def stations_level_over_threshold(stations, tol):

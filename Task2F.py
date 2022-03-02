@@ -10,12 +10,9 @@ def run():
     #build and update list of station objects
     stations = build_station_list()
     update_water_levels(stations)
-    valid_stations = []
-    for i in stations:
-        valid_stations.append(i)
 
     # get the 5 stations where the water level is highest
-    highest = stations_highest_rel_level(valid_stations, 5)
+    highest = stations_highest_rel_level(stations, 5)
 
     dt = 2 # number of days
     #cannot get station names directly from list of tuples
@@ -30,10 +27,12 @@ def run():
     for i in range(5):
         high_objects.append(highest[i][0])
     
-    # actually plot the rivers over time one by one
+    # actually plot the rivers over time on same graph
     for i in range(5):
         dates, levels = fetch_measure_levels(high_objects[i].measure_id, dt=datetime.timedelta(days=dt)) # for 2 days
-    plot_water_level_with_fit(high_objects[i], dates, levels, 4) and plot_water_levels(high_objects[i], dates, levels)
+        plot_water_level_with_fit(high_objects[i], dates, levels, 4) and plot_water_levels(high_objects[i], dates, levels)
+
+    #NB when I ran this, hayes basin gave very dodgy readings (completely out of max/min levels)
 
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")
