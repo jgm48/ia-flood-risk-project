@@ -4,10 +4,10 @@
 
 import datetime
 import numpy as np
-from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.analysis import polyfit
 from floodsystem.analysis import risk_level_towns
+from floodsystem.datafetcher import fetch_measure_levels
 
 def test_polyfit():
     """Tests polyfit function"""

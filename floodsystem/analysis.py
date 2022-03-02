@@ -1,11 +1,11 @@
 #New submodule analysis
 import matplotlib.dates
 import numpy as np
-from stationdata import build_station_list, update_water_levels
-from datafetcher import fetch_measure_levels
-from flood import stations_level_over_threshold
+from .stationdata import build_station_list, update_water_levels
+from .datafetcher import fetch_measure_levels
+from .flood import stations_level_over_threshold
 import datetime
-from station import MonitoringStation, inconsistent_typical_range_stations
+from .station import MonitoringStation, inconsistent_typical_range_stations
 
 # polynomial fitting for Task 2F
 def polyfit(dates, levels, p):
