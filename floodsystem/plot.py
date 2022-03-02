@@ -1,7 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-from .analysis import polyfit
+from floodsystem.analysis import polyfit
 
 # for task 2e
 def plot_water_levels(station, dates, levels):
@@ -43,7 +43,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
     dates_float_list = matplotlib.dates.date2num(dates)
     # best fit polynomial
     poly, d0 = polyfit(dates, levels, p)
-    plt.plot(dates, poly(dates_float_list - d0), color='gold', label='best fit polynomial order {0}'.format(p))
+    plt.plot(dates, poly(dates_float_list - d0), color='cyan', label='best fit polynomial order {0}'.format(p))
     plt.legend(loc='best')
     # data from before
     plot_water_levels(station, dates, levels)
