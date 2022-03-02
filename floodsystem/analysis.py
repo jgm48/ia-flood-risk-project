@@ -26,14 +26,6 @@ def polyfit(dates, levels, p):
     return poly, d0 #a tuple of the poly object and time shift
 
 # determining flood risk level of towns for task 2G
-'''
-Flood risk categories, arranged by average % of water level between
- min and max average levels over 2 days:
-severe: 90% or over
-high: 70% up to but not including 90%
-moderate: 40% up to but not including 70%
-low: below 40%
-'''
 def risk_level_stations():
     
     # build list of stations and water levels therein...
@@ -61,17 +53,17 @@ def risk_level_stations():
     counter = 0
     # sort all of the stations into their risk levels
     for i in sorted_with_level:
-        for n in stations_level_over_threshold(valid_stations, 2.5):
+        for n in stations_level_over_threshold(valid_stations, 2):
             if i[0] == n[0]:
                 severe_stations.append(i[0])
                 counter += 1
     for i in range(counter, len(sorted_with_level)):
-        for a in stations_level_over_threshold(valid_stations, 1.2):
+        for a in stations_level_over_threshold(valid_stations, 1.5):
             if sorted_with_level[i][0] == a[0]:
                 high_stations.append(sorted_with_level[i][0])
                 counter += 1
     for i in range(counter, len(sorted_with_level)):
-        for a in stations_level_over_threshold(valid_stations, 0.7):
+        for a in stations_level_over_threshold(valid_stations, 0.5):
             if sorted_with_level[i][0] == a[0]:
                 moderate_stations.append(sorted_with_level[i][0])
                 counter += 1
