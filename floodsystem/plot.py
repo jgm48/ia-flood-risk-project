@@ -1,8 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
-import analysis
-from analysis import polyfit
+from .analysis import polyfit
 
 # for task 2e
 def plot_water_levels(station, dates, levels):
@@ -39,7 +38,8 @@ def plot_water_levels(station, dates, levels):
 # for Task 2F
 
 def plot_water_level_with_fit(station, dates, levels, p):
-    
+    """plots water level with a best fit polynomial of order p for given dates and levels"""
+
     dates_float_list = matplotlib.dates.date2num(dates)
     # best fit polynomial
     poly, d0 = polyfit(dates, levels, p)
